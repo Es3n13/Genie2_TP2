@@ -1,0 +1,69 @@
+﻿<Window x:Class="Genie2_TP2.Pay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Paiement du film" Height="500" Width="500"
+        WindowStartupLocation="CenterScreen"
+        Background="#FF1E1E1E">
+
+    <Window.Resources>
+        <!--Boutons-->
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="#E50914"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#F40612"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- TextBox moderne -->
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#2C2C2C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#444"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="400">
+            <TextBlock Text="Paiement du film" FontSize="22" Foreground="White" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+            <TextBlock Text="Titre du film :" Foreground="#9EA8AF" Margin="0,0,0,5"/>
+            <TextBlock x:Name="MovieTitleText" Text="Nom du film" Foreground="White" FontWeight="SemiBold" Margin="0,0,0,15"/>
+
+            <TextBlock Text="Prix à l'unité :" Foreground="#9EA8AF" Margin="0,0,0,5"/>
+            <TextBlock x:Name="MoviePriceText" Text="$4.99" Foreground="White" FontWeight="SemiBold" Margin="0,0,0,15"/>
+
+            <TextBlock Text="Informations de paiement" Foreground="#9EA8AF" Margin="0,0,0,5"/>
+            <TextBox Text="Numéro de carte" Style="{StaticResource ModernTextBox}" Margin="0,0,0,10"/>
+            <TextBox Text="Date d'expiration (MM/AA)" Style="{StaticResource ModernTextBox}" Margin="0,0,0,10"/>
+            <TextBox Text="CVV" Style="{StaticResource ModernTextBox}" Margin="0,0,0,20"/>
+
+            <Button Content="Payer maintenant" Style="{StaticResource PrimaryButton}" Height="40"/>
+        </StackPanel>
+    </Grid>
+</Window>
